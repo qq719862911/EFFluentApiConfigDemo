@@ -1,0 +1,7 @@
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\bin\Debug\ConsoleApp33.exe.config
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\bin\Debug\ConsoleApp33.exe
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\bin\Debug\ConsoleApp33.pdb
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\obj\Debug\ConsoleApp33.csprojResolveAssemblyReference.cache
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\obj\Debug\ConsoleApp33.csproj.CoreCompileInputs.cache
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\obj\Debug\ConsoleApp33.exe
+c:\users\guohaiyi\Source\Repos\WebAppTest11\ConsoleApp33\obj\Debug\ConsoleApp33.pdb

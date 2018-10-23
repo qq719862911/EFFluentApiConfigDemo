@@ -1,0 +1,15 @@
+﻿@model SelectList
+@{
+    ViewBag.Title = "Index";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+
+<h2>Index</h2>
+<div>
+    @*@Html.DropDownList("persons",(IEnumerable<SelectListItem>)ViewData["personList"],new { onchange = "javascript:alert('ok')", style = "color:red", aaa = "rupeng", id = "yzk", @class = "warn error" })*@
+</div>
+<div>
+    @Html.DropDownList("PersonInfos",(SelectList)Model)
+</div>
+
