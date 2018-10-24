@@ -11,7 +11,7 @@ using System.Web.Mvc;
 using WebApp22;
 using WebApp22.DB;
 using WebApp22.Entity;
-
+using System.Data.Entity;
 namespace WebApp22.Controllers
 {
     public class HomeController : Controller
@@ -208,6 +208,53 @@ namespace WebApp22.Controllers
                 }
             }
             return Content("ok");
+        }
+
+        public ActionResult GetStu() {
+            Student s1 = null;
+            Class c1 = null;
+            using (MyDbContext ctx = new MyDbContext())
+            {
+                //这种写法会连接数据库多次，查询多次
+                //var sList = ctx.Students.ToList();
+                // foreach (var s in sList)
+                // {
+                //     s1 = s;
+                //     c1 = s1.Class;
+                // }
+
+                //数据不多建议这样连接数据库一次 把学生班级都加载，用include 把班级也查询出来
+                var sList = ctx.Students.Include(s=>s.Class).ToList();
+                foreach (var s in sList)
+                {
+                    s1 = s;
+                    c1 = s1.Class;
+                }
+            }
+            Console.WriteLine(s1.Name);
+            Console.WriteLine(c1.Name);
+            return Content("");
+        }
+
+        public ActionResult GetStudentInfo()
+        {
+            using (MyDbContext ctx = new MyDbContext())
+            {
+                //using System.Data.Entity; 才能用include的lambda形式写法
+                //Include("Class")的意思是直接加载 Student 的 Class 属性的数据。注意只有关联的对象属性才可以 用 Include，普通字段不可以
+                Student s1 = ctx.Students.Include(s => s.Class).Include(s => s.Teachers).First();
+                var c1 = s1.Class;
+                var ts = s1.Teachers;
+                return Content("student: " + s1.Name + "  class: " + c1?.Name + "first teacher:  " + ts.FirstOrDefault()?.Name);
+
+                /*
+             如果 Class 对象还有一个 School 属性，也想把 School 对象的属性也加载，就要：
+var s = ctx.Students.Include("Class").Include("Class.School").First(); 或者更好的
+var s = ctx.Students.Include(nameof(Student.Class))Include(nameof(Student.Class)+"."+nameof(Class.School)).First();
+             */
+
+
+            }
         }
 
         public ActionResult AddUserSharedCar()
